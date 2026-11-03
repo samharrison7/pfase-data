@@ -37,8 +37,13 @@ pixi run build
 
 This runs all four notebooks in order, which takes a few minutes. Each notebook runs in place, so its saved
 outputs (checks and maps) are refreshed. To run a single notebook and the UK notebook it depends on, use one of
-`pixi run uk-2km`, `uk-1km-500m`, `catchment-2km` or `catchment-1km-500m`. To work interactively, use
-`pixi run lab`.
+`pixi run uk-2km`, `uk-1km-500m`, `catchment-2km` or `catchment-1km-500m`.
+
+To launch Jupyter Lab and work interactively, use:
+
+```sh
+pixi run lab
+```
 
 ## Outputs
 

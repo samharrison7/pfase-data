@@ -1,0 +1,13 @@
+
+# pixi environments
+.pixi
+*.egg-info
+# Local data paths (copy paths.example.toml)
+paths.toml
+# Jupyter
+.ipynb_checkpoints
+# Outputs, made by `pixi run build`
+data/*.tif
+data/*.tif.md
+data/*.gpkg
+data/boundaries/colne_ihu-*/

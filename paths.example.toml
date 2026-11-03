@@ -1,0 +1,37 @@
+# Data locations for the flow direction notebooks in notebooks/.
+#
+# Copy this file to paths.toml (which is not version-controlled) and set the paths for your machine.
+# Relative paths are relative to the folder holding this file, and ~ is expanded. To keep the config
+# somewhere else, set the PFASE_PATHS environment variable to its path.
+
+# Output folder for the UK and catchment flowdir, flowacc and conditioned DEM rasters and the catchment
+# domains. The catchment notebooks read the UK grids from here too. The small inputs below live here by default.
+data_dir = "data"
+
+# --- Large inputs, not included: download them and point to them here ---
+
+# HydroSHEDS v1 void-filled DEM ("con"), 3 arc-second, Europe: eu_con_3s.tif
+# https://www.hydrosheds.org/hydrosheds-core-downloads
+hydrosheds_dem = "/path/to/hydrosheds/eu_con_3s/eu_con_3s.tif"
+
+# EuroDEM 2023 (EuroGeographics open data), used north of 60°N where HydroSHEDS has no data: eurodem.tif
+# https://www.mapsforeurope.org/access-data
+eurodem = "/path/to/euro-dem-tif/data/eurodem.tif"
+
+# OS Open Rivers, ESRI Shapefile download, WatercourseLink layer
+# https://osdatahub.os.uk/downloads/open/OpenRivers
+os_rivers = "/path/to/os-river-network/WatercourseLink.shp"
+
+# CEH Integrated Hydrological Units (IHU), catchments layer: the source of the Colne boundary (HA039G13S0001).
+# Available from the UKCEH Environmental Information Data Centre (https://catalogue.ceh.ac.uk)
+ihu_catchments = "/path/to/integrated-hydrological-units/ihu_catchments.shp"
+
+# --- Small inputs ---
+
+# NRFA gauging station list. If the file is missing, the UK notebooks download it from
+# https://nrfaapps.ceh.ac.uk/nrfa/ws/station-info?station=*&format=csv&fields=id,name,catchment-area,easting,northing,grid-reference
+nrfa_stations = "data/nrfa/nrfa_station_info.csv"
+
+# Environment Agency WFD Cycle 3 Wyre Management Catchment (3119), shapefile download from the Catchment
+# Data Explorer: https://environment.data.gov.uk/catchment-planning/ManagementCatchment/3119
+wyre_boundary = "data/boundaries/wyre_ea-management-catchment-3119/WFD_Surface_Water_Management_Catchments_Cycle_3.shp"

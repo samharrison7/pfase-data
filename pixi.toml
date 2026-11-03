@@ -1,0 +1,32 @@
+[project]
+authors = ["Sam Harrison <samharrison.xg@gmail.com>"]
+channels = ["conda-forge"]
+description = "Hydrologically conditioned UK flow direction grids (2 km, 1 km, 500 m) and Colne/Wyre catchment domains"
+name = "pfase-data"
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+version = "0.1.0"
+
+[tasks]
+# Each task runs one notebook in place, saving its outputs into the notebook. The catchment
+# notebooks need the UK grids, so they depend on the UK notebooks.
+uk-2km = { cmd = "jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=-1 2026-11-02_1_uk-flowdir-2km.ipynb", cwd = "notebooks" }
+uk-1km-500m = { cmd = "jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=-1 2026-11-02_2_uk-flowdir-1km-500m.ipynb", cwd = "notebooks" }
+catchment-2km = { cmd = "jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=-1 2026-11-02_3_catchment-flowdir-2km.ipynb", cwd = "notebooks", depends-on = ["uk-2km"] }
+catchment-1km-500m = { cmd = "jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=-1 2026-11-02_4_catchment-flowdir-1km-500m.ipynb", cwd = "notebooks", depends-on = ["uk-1km-500m"] }
+# Run all four notebooks
+build = { depends-on = ["catchment-2km", "catchment-1km-500m"] }
+lab = "jupyter lab"
+
+[dependencies]
+jupyterlab = ">=4.6.3,<5"
+matplotlib = ">=3.11.1,<4"
+rasterio = ">=1.5.2,<2"
+pysheds = ">=0.5,<0.6"
+pyproj = ">=3.8.0,<4"
+scipy = ">=1.18.1,<2"
+geopandas = ">=1.2.0,<2"
+pyogrio = ">=0.13.0,<0.14"
+numba = ">=0.68.0,<0.69"
+shapely = ">=2.2.0,<3"
+pandas = ">=3.1.0,<4"
+nbconvert-core = ">=7"
